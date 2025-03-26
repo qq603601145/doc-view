@@ -121,6 +121,8 @@
                     text="Upload To ShowDoc"/>
             <action id="liuzhihang.doc.yuque.upload" class="com.liuzhihang.doc.view.action.upload.YuQueUploadAction"
                     text="Upload To YuQue"/>
+            <action id="liuzhihang.doc.yuque.upload" class="com.liuzhihang.doc.view.action.upload.TornaUploadAction"
+                    text="Upload To Torna"/>
         </group>
 
         <!-- preview 界面目录左下角toolbar -->

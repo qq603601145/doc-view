@@ -24,6 +24,7 @@ repositories {
 dependencies {
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    implementation 'cn.torna:torna-sdk:1.0.16'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/

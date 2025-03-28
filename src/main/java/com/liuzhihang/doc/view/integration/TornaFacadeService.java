@@ -1,5 +1,6 @@
 package com.liuzhihang.doc.view.integration;
 
+import cn.torna.sdk.request.DocPushRequest;
 import com.liuzhihang.doc.view.integration.dto.YApiCat;
 import com.liuzhihang.doc.view.integration.dto.YapiSave;
 
@@ -20,7 +21,7 @@ public interface TornaFacadeService {
      *
      * @param dto
      */
-    void save(YapiSave dto) throws Exception;
+    void save(DocPushRequest request, String url) throws Exception;
 
     /**
      * 获取菜单列表

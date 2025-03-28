@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class TornaSettingForm {
     private JPanel rootPanel;
 
-    private JPanel yapiProjectPanel;
+    private JPanel tornaProjectPanel;
     private JBTextField urlTextField;
     private JBTextField projectIdTextField;
     private JBTextField tokenTextField;
@@ -24,7 +24,7 @@ public class TornaSettingForm {
 
     public TornaSettingForm(Project project) {
         this.project = project;
-        yapiProjectPanel.setBorder(IdeBorderFactory.createTitledBorder(DocViewBundle.message("yapi.project.panel")));
+        tornaProjectPanel.setBorder(IdeBorderFactory.createTitledBorder(DocViewBundle.message("torna.project.panel")));
     }
 
     public JPanel getRootPanel() {
@@ -40,16 +40,16 @@ public class TornaSettingForm {
             return true;
         }
 
-        String projectId = projectIdTextField.getText().trim();
+//        String projectId = projectIdTextField.getText().trim();
 
 
-        if (!Pattern.compile("^?[0-9]+").matcher(projectId).matches()) {
-            return false;
-        }
-
-        if (Long.parseLong(projectId) != settings.getProjectId()) {
-            return true;
-        }
+//        if (!Pattern.compile("^?[0-9]+").matcher(projectId).matches()) {
+//            return false;
+//        }
+//
+//        if (Long.parseLong(projectId) != settings.getProjectId()) {
+//            return true;
+//        }
 
         if (!tokenTextField.getText().equals(settings.getToken())) {
             return true;
@@ -73,12 +73,12 @@ public class TornaSettingForm {
             if (Pattern.compile("^?[0-9]+").matcher(projectId).matches()) {
                 settings.setProjectId(Long.parseLong(projectId));
             } else {
-                DocViewNotification.notifyError(project, DocViewBundle.message("notify.yapi.project.id"));
+                DocViewNotification.notifyError(project, DocViewBundle.message("notify.torna.project.id"));
             }
 
             settings.setToken(tokenTextField.getText());
         } catch (NumberFormatException e) {
-            throw new ConfigurationException(DocViewBundle.message("notify.yapi.project.id"));
+            throw new ConfigurationException(DocViewBundle.message("notify.torna.project.id"));
         }
     }
 

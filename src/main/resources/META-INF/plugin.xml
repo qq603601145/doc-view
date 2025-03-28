@@ -22,6 +22,7 @@
         <!-- 模版设置 -->
         <projectService serviceImplementation="com.liuzhihang.doc.view.config.TemplateSettings"/>
         <projectService serviceImplementation="com.liuzhihang.doc.view.config.YApiSettings"/>
+        <projectService serviceImplementation="com.liuzhihang.doc.view.config.TornaSettings"/>
         <projectService serviceImplementation="com.liuzhihang.doc.view.config.ShowDocSettings"/>
         <projectService serviceImplementation="com.liuzhihang.doc.view.config.YuQueSettings"/>
 
@@ -32,7 +33,9 @@
         <applicationService serviceImplementation="com.liuzhihang.doc.view.service.impl.WriterService"/>
 
         <applicationService serviceImplementation="com.liuzhihang.doc.view.service.impl.YApiServiceImpl"/>
+        <applicationService serviceImplementation="com.liuzhihang.doc.view.service.impl.TornaServiceImpl"/>
         <applicationService serviceImplementation="com.liuzhihang.doc.view.integration.impl.YApiFacadeServiceImpl"/>
+        <applicationService serviceImplementation="com.liuzhihang.doc.view.integration.impl.TornaFacadeServiceImpl"/>
         <applicationService serviceImplementation="com.liuzhihang.doc.view.service.impl.ShowDocServiceImpl"/>
         <applicationService serviceImplementation="com.liuzhihang.doc.view.integration.impl.ShowDocFacadeServiceImpl"/>
         <applicationService serviceImplementation="com.liuzhihang.doc.view.service.impl.YuQueServiceImpl"/>
@@ -72,6 +75,12 @@
                              id="liuzhihang.api.doc.YuQueSettingsConfigurable"
                              groupId="liuzhihang.api.doc.SettingsConfigurable"
                              displayName="YuQue Settings"
+                             nonDefaultProject="true"/>
+
+        <projectConfigurable instance="com.liuzhihang.doc.view.config.TornaSettingsConfigurable"
+                             id="liuzhihang.api.doc.TornaTemplatesConfigurable"
+                             groupId="liuzhihang.api.doc.SettingsConfigurable"
+                             displayName="Torna Settings"
                              nonDefaultProject="true"/>
 
         <toolWindow id="Doc View"
@@ -121,7 +130,7 @@
                     text="Upload To ShowDoc"/>
             <action id="liuzhihang.doc.yuque.upload" class="com.liuzhihang.doc.view.action.upload.YuQueUploadAction"
                     text="Upload To YuQue"/>
-            <action id="liuzhihang.doc.yuque.upload" class="com.liuzhihang.doc.view.action.upload.TornaUploadAction"
+            <action id="liuzhihang.doc.torna.upload" class="com.liuzhihang.doc.view.action.upload.TornaUploadAction"
                     text="Upload To Torna"/>
         </group>
 
@@ -209,6 +218,9 @@
                 <action id="liuzhihang.doc.tool.window.catalog.action.upload.yapi"
                         class="com.liuzhihang.doc.view.action.toolbar.window.catalog.CatalogUploadYApiAction"
                         text="YApi" description="YApi"/>
+                <action id="liuzhihang.doc.tool.window.catalog.action.upload.torna"
+                        class="com.liuzhihang.doc.view.action.toolbar.window.catalog.CatalogUploadTornaAction"
+                        text="Torna" description="Torna"/>
                 <action id="liuzhihang.doc.tool.window.catalog.action.upload.showdoc"
                         class="com.liuzhihang.doc.view.action.toolbar.window.catalog.CatalogUploadShowDocAction"
                         text="ShowDoc" description="ShowDoc"/>

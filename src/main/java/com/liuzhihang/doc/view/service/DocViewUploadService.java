@@ -7,6 +7,7 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.liuzhihang.doc.view.dto.DocView;
 import com.liuzhihang.doc.view.service.impl.ShowDocServiceImpl;
+import com.liuzhihang.doc.view.service.impl.TornaServiceImpl;
 import com.liuzhihang.doc.view.service.impl.YApiServiceImpl;
 import com.liuzhihang.doc.view.service.impl.YuQueServiceImpl;
 import org.jetbrains.annotations.NotNull;
@@ -21,11 +22,14 @@ import java.util.List;
  */
 public interface DocViewUploadService {
 
-    public static final String[] UPLOAD_OPTIONS = {"YApi", "ShowDoc", "语雀"};
+    public static final String[] UPLOAD_OPTIONS = {"YApi", "ShowDoc", "语雀", "Torna"};
 
     @NotNull
     static DocViewUploadService getInstance(@NotNull String name) {
-        if (name.equals("YApi")) {
+        if (name.equals("Torna")) {
+            // 上传到Torna
+            return ApplicationManager.getApplication().getService(TornaServiceImpl.class);
+        } else if (name.equals("YApi")) {
             // 上传到 yapi
             return ApplicationManager.getApplication().getService(YApiServiceImpl.class);
         } else if (name.equals("ShowDoc")) {

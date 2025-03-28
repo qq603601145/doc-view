@@ -1,14 +1,14 @@
 package com.liuzhihang.doc.view.integration.impl;
 
+import cn.torna.sdk.client.OpenClient;
+import cn.torna.sdk.request.DocPushRequest;
+import cn.torna.sdk.response.DocPushResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.liuzhihang.doc.view.integration.TornaFacadeService;
-import com.liuzhihang.doc.view.integration.YApiFacadeService;
 import com.liuzhihang.doc.view.integration.dto.YApiCat;
 import com.liuzhihang.doc.view.integration.dto.YApiResponse;
-import com.liuzhihang.doc.view.integration.dto.YapiSave;
 import com.liuzhihang.doc.view.utils.HttpUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,18 +26,17 @@ public class TornaFacadeServiceImpl implements TornaFacadeService {
     private static final Gson gson = new GsonBuilder().serializeNulls().create();
 
     @Override
-    public void save(YapiSave save) throws Exception {
+    public void save(DocPushRequest request, String url) throws Exception {
 
-        String resp = HttpUtils.post(save.getYapiUrl() + "/api/interface/save", gson.toJson(save));
+        OpenClient client = new OpenClient(url);
+        DocPushResponse response = client.execute(request);
 
-        if (StringUtils.isBlank(resp)) {
+        if (response == null) {
             throw new Exception("Torna 接口返回为空");
         }
-
-        JsonObject jsonObject = gson.fromJson(resp, JsonObject.class);
-
-        if (jsonObject.get("errcode").getAsInt() != 0) {
-            throw new Exception("Torna 接口返回失败:" + resp);
+        log.info("上传结果[{}]", response);
+        if (!response.isSuccess()) {
+            throw new Exception("Torna 接口返回失败:" + response);
         }
     }
 
